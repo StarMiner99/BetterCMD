@@ -2,7 +2,7 @@
 
 namespace BetterCMD
 {
-    class Program
+    class BetterCMD
     {
         static void Main(string[] args)
         {
