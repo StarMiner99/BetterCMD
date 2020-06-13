@@ -1,0 +1,13 @@
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\bin\Debug\netcoreapp3.1\BetterCMD.exe
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\bin\Debug\netcoreapp3.1\BetterCMD.deps.json
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\bin\Debug\netcoreapp3.1\BetterCMD.runtimeconfig.json
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\bin\Debug\netcoreapp3.1\BetterCMD.runtimeconfig.dev.json
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\bin\Debug\netcoreapp3.1\BetterCMD.dll
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\bin\Debug\netcoreapp3.1\BetterCMD.pdb
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.csprojAssemblyReference.cache
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.csproj.CoreCompileInputs.cache
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.AssemblyInfoInputs.cache
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.AssemblyInfo.cs
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.dll
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.pdb
+C:\Users\Thijs\Documents\BetterCMD\BetterCMD\obj\Debug\netcoreapp3.1\BetterCMD.genruntimeconfig.cache
