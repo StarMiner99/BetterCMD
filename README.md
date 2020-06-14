@@ -20,7 +20,7 @@ BetterCMD implements new features for windows command line.
 - now press the 'Environment Variables...' Button
 - search for 'Path' click on it and press 'Edit...'
 - press on 'Browse' 
-- Navigate to the folder where you installed BetterCMD (typically This PC->C:->Program Files (x86)->StarMiner99->BetterCMD)
+- Navigate to the folder where you installed BetterCMD (typically This PC->C:->Program Files (x86)->StarMiner99->BetterCMD->win10-x86)
 - select it and press 'OK' in every window you opened up.
 ### Portable
 #### Install .NET Core Runtime (skip this step if already done)
