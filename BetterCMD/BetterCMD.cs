@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace BetterCMD
 {
@@ -19,6 +20,16 @@ namespace BetterCMD
             {
                 
                 Prompt prompt = new Prompt("#14 BetterCMD #1 *10 nice~#1 test~~ *0 #1 {user}@{hostname}:{dirLin}>"); //create new prompt
+                try
+                {
+                    Directory.SetCurrentDirectory(args[0]);
+                }
+                catch (Exception)
+                {
+                    Directory.SetCurrentDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+                    Directory.SetCurrentDirectory("..");
+                }
+                
                 while (true)
                 {
                     prompt.printPrompt(); //print the prompt
