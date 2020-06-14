@@ -18,9 +18,13 @@ namespace BetterCMD
             else
             {
                 
-                Prompt prompt = new Prompt("#14 BetterCMD #1 *10 nice~#1 test~~ {user}@{hostname}:{dirLin}>"); //create new prompt
-                prompt.printPrompt(); //print the prompt
-
+                Prompt prompt = new Prompt("#14 BetterCMD #1 *10 nice~#1 test~~ *0 #1 {user}@{hostname}:{dirLin}>"); //create new prompt
+                while (true)
+                {
+                    prompt.printPrompt(); //print the prompt
+                    string input = prompt.readCommandInput(); // read the input
+                    prompt.handleCommand(input); // execute command
+                }
             }
         }
     }

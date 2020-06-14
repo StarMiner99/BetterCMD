@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BetterCMD
 {
     public class Prompt
     {
-        private string promptFormat;
+        private readonly string promptFormat;
         public Prompt(string promptFormat)
         {
             this.promptFormat = promptFormat;
@@ -68,6 +69,28 @@ namespace BetterCMD
                     Console.Write(promptFormat[i]); // nothing special just print the char
                 }
             }
+        }
+
+        public string readCommandInput()
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Black;
+            string input = Console.ReadLine();
+            return input;
+        }
+
+        public void handleCommand(string command)
+        {
+            Process p = new Process(); // create the cmd process
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c " + command;
+            p.StartInfo = startInfo;
+            p.Start();
+            Console.WriteLine(p.StandardOutput.ReadToEnd());
+            p.WaitForExit();
         }
     }
 }
