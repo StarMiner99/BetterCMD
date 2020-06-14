@@ -5,7 +5,7 @@ namespace BetterCMD
 {
     class BetterCMD
     {
-        private static readonly string promptFormat = Environment.GetEnvironmentVariable("CMDPrompt", EnvironmentVariableTarget.User); // get the prompt
+        public static readonly string promptFormat = Environment.GetEnvironmentVariable("CMDPrompt", EnvironmentVariableTarget.User); // get the prompt
 
         static void Main(string[] args)
         {

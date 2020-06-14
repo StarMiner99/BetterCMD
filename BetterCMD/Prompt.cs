@@ -12,8 +12,9 @@ namespace BetterCMD
             this.promptFormat = promptFormat;
         }
 
-        public void printPrompt ()
+        public string printPrompt ()
         {
+            string promptString = "";
             
             //print the prompt
             for (int i = 0; i < promptFormat.Length; i++)
@@ -40,7 +41,8 @@ namespace BetterCMD
                 } else if (promptFormat[i] == '~')
                 {
                     Console.Write(promptFormat[++i]); //write the car after the ~ and skip 1 char
-                    
+                    promptString += promptFormat[i];
+
                 } else if (promptFormat[i] == '{')
                 {
                     int closeBracket = promptFormat.IndexOf("}", i); //get next closed bracket
@@ -51,15 +53,19 @@ namespace BetterCMD
                     if (varName == "user") //user
                     {
                         Console.Write(Environment.UserName);
+                        promptString += Environment.UserName;
                     } else if (varName == "hostname") //hostname (lowercase)
                     {
                         Console.Write(Environment.MachineName.ToLower());
+                        promptString += Environment.MachineName.ToLower();
                     } else if (varName == "dirWin") //current working dir in windows style
                     {
                         Console.Write(Environment.CurrentDirectory);
+                        promptString += Environment.CurrentDirectory;
                     } else if (varName == "dirLin") //current working dir in linux style
                     {
                         Console.Write(Environment.CurrentDirectory.Replace("\\","/"));
+                        promptString += Environment.CurrentDirectory.Replace("\\", "/");
                     }
                     
                     
@@ -68,8 +74,10 @@ namespace BetterCMD
                 else
                 {
                     Console.Write(promptFormat[i]); // nothing special just print the char
+                    promptString += promptFormat[i];
                 }
             }
+            return promptString;
         }
 
         public string readCommandInput()
@@ -78,7 +86,7 @@ namespace BetterCMD
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             
-            string input = Console.ReadLine();
+            string input = Input.autoCompleteInput();
             return input;
             
         }
