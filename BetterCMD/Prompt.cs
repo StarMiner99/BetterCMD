@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace BetterCMD
 {
@@ -81,16 +83,41 @@ namespace BetterCMD
 
         public void handleCommand(string command)
         {
-            Process p = new Process(); // create the cmd process
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/c " + command;
-            p.StartInfo = startInfo;
-            p.Start();
-            Console.WriteLine(p.StandardOutput.ReadToEnd());
-            p.WaitForExit();
+            //get special commands (cd, exit, ...)
+            
+            //extract command from args for special comands
+            string commandOnly = null;
+            try
+            {
+                commandOnly = command.Substring(0, command.IndexOf(' '));
+            }
+            catch (Exception)
+            {
+                commandOnly = null;
+            }
+            
+            if (commandOnly == "cd")
+            {
+                Directory.SetCurrentDirectory(command.Substring(command.IndexOf(' ')+1, command.Length-command.IndexOf(' ')-1));
+            } else if (command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                Process p = new Process(); // create the cmd process
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.UseShellExecute = false;
+                startInfo.RedirectStandardOutput = true;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = "/c " + command;
+                p.StartInfo = startInfo;
+                p.Start();
+                Console.WriteLine(p.StandardOutput.ReadToEnd());
+                p.WaitForExit();
+            }
+
+            
         }
     }
 }
