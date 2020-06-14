@@ -75,7 +75,7 @@ namespace BetterCMD
 
         public string readCommandInput()
         {
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
             string input = Console.ReadLine();
             return input;
