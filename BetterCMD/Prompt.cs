@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 
 namespace BetterCMD
 {
@@ -25,7 +24,7 @@ namespace BetterCMD
                     int nextWhiteSpace = promptFormat.IndexOf(" ", i); //get next whitespace
                     
                     int colorCode = Int32.Parse(promptFormat.Substring(i+1, nextWhiteSpace - i)); //parse the color code to int
-                    Console.ForegroundColor = (ConsoleColor)colorCode; //convert it to Consoleolor
+                    Console.ForegroundColor = (ConsoleColor)colorCode; //convert it to ConsoleColor
                     
                     i += promptFormat.Substring(i, nextWhiteSpace - i).Length; //skip the color code chars to prevent to be printed
                     
@@ -75,18 +74,21 @@ namespace BetterCMD
 
         public string readCommandInput()
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
+            
             string input = Console.ReadLine();
             return input;
+            
         }
 
         public void handleCommand(string command)
         {
             //get special commands (cd, exit, ...)
             
-            //extract command from args for special comands
-            string commandOnly = null;
+            //extract command from args for special commands
+            string commandOnly;
             try
             {
                 commandOnly = command.Substring(0, command.IndexOf(' '));
@@ -99,9 +101,17 @@ namespace BetterCMD
             if (commandOnly == "cd")
             {
                 Directory.SetCurrentDirectory(command.Substring(command.IndexOf(' ')+1, command.Length-command.IndexOf(' ')-1));
-            } else if (command == "exit")
+            } else if (commandOnly == "exit" || command == "exit")
             {
-                Environment.Exit(0);
+                try
+                {
+                    Environment.Exit(Int32.Parse(command.Substring(command.IndexOf(' ')+1, command.Length-command.IndexOf(' ')-1)));
+                }
+                catch (Exception)
+                {
+                    Environment.Exit(0);
+                }
+                
             }
             else
             {
