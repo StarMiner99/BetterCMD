@@ -12,14 +12,14 @@ namespace BetterCMD
             if (promptFormat == null) //prompt has not been configured
             {
                 Console.WriteLine("Configuring BetterCMD, Please Wait...");
-                Environment.SetEnvironmentVariable("CMDPrompt", "#14 BetterCMD #1 *10 nice~#1 test~~",
+                Environment.SetEnvironmentVariable("CMDPrompt", "#14 BetterCMD #2 {user}@{hostname}-#13 {dirWin}#1 > ",
                     EnvironmentVariableTarget.User); //configure prompt
                 Console.WriteLine("BetterCMD will work after you start it again!");
             }
             else
             {
                 
-                Prompt prompt = new Prompt("#14 BetterCMD #1 *10 nice~#1 test~~ *0 #1 {user}@{hostname}:{dirLin}>"); //create new prompt
+                Prompt prompt = new Prompt(promptFormat); //create new prompt
                 try
                 {
                     Directory.SetCurrentDirectory(args[0]);
