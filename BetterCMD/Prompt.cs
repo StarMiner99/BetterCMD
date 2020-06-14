@@ -100,7 +100,15 @@ namespace BetterCMD
             
             if (commandOnly == "cd")
             {
-                Directory.SetCurrentDirectory(command.Substring(command.IndexOf(' ')+1, command.Length-command.IndexOf(' ')-1));
+                try
+                {
+                    Directory.SetCurrentDirectory(command.Substring(command.IndexOf(' ')+1, command.Length-command.IndexOf(' ')-1));
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("The system cannot find the path specified.");
+                }
+                
             } else if (commandOnly == "exit" || command == "exit")
             {
                 try
