@@ -66,12 +66,12 @@ namespace BetterCMD
                             {
                                 Console.WriteLine();
                                 builder.Remove(autoBegin + 1, prefix.Length);
-                                builder.Insert(autoBegin +1, matchArray[0]);
+                                builder.Insert(autoBegin +1, matchArray[0] + " ");
                                 //builder.Append(behindInsert);
                                 clearCurrentLine();
                                 Console.Write(builder.ToString());
-                                Console.SetCursorPosition(cursorPos + (matchArray[0].Length-prefix.Length) + promptStr.Length, Console.CursorTop);
-                                cursorPos += matchArray[0].Length - prefix.Length;
+                                Console.SetCursorPosition(cursorPos + (matchArray[0].Length+1-prefix.Length) + promptStr.Length, Console.CursorTop);
+                                cursorPos += matchArray[0].Length +1- prefix.Length;
                             } else if (matchArray.Length > 1)
                             {
                                 Console.WriteLine();
