@@ -52,7 +52,7 @@ namespace BetterCMD
 
                             List<string> matches = new List<string>();
                             
-                            Console.WriteLine();
+                            
                             foreach (string item in fileDir)
                             {
                                 if (item.StartsWith(prefix))
@@ -64,7 +64,7 @@ namespace BetterCMD
                             string[] matchArray = matches.ToArray();
                             if (matchArray.Length == 1)
                             {
-                                string behindInsert = builder.ToString().Substring(cursorPos);
+                                Console.WriteLine();
                                 builder.Remove(autoBegin + 1, prefix.Length);
                                 builder.Insert(autoBegin +1, matchArray[0]);
                                 //builder.Append(behindInsert);
@@ -72,6 +72,18 @@ namespace BetterCMD
                                 Console.Write(builder.ToString());
                                 Console.SetCursorPosition(cursorPos + (matchArray[0].Length-prefix.Length) + promptStr.Length, Console.CursorTop);
                                 cursorPos += matchArray[0].Length - prefix.Length;
+                            } else if (matchArray.Length > 1)
+                            {
+                                Console.WriteLine();
+                                foreach (var item in matchArray)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                clearCurrentLine();
+                                Console.Write(builder.ToString());
+                                Console.SetCursorPosition(cursorPos + promptStr.Length, Console.CursorTop);
+
                             }
 
                         }
