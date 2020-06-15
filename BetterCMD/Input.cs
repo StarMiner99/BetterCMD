@@ -14,6 +14,7 @@ namespace BetterCMD
             int cursorPos = 0;
             string promptStr = clearCurrentLine();
             
+            
 
             StringBuilder builder = new StringBuilder();
             ConsoleKeyInfo input = Console.ReadKey(intercept:true);
@@ -23,6 +24,70 @@ namespace BetterCMD
                 string currentInput = builder.ToString();
                 if (input.Key == ConsoleKey.Tab)
                 {
+                    
+                    int autoBegin = currentInput.LastIndexOf(' ', cursorPos-1);
+                    //Console.Write(autoBegin);
+
+                    if (autoBegin != -1)
+                    {
+                        string prefix = currentInput.Substring(autoBegin, cursorPos-autoBegin);
+                        if (prefix != " ")
+                        {
+                            string[] dirs = Directory.GetDirectories(Directory.GetCurrentDirectory());
+                            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory());
+                            string[] fileDir = new string[dirs.Length + files.Length];
+                            
+                            Array.Copy(dirs, fileDir, dirs.Length);
+                            Array.Copy(files, 0, fileDir, dirs.Length, files.Length);
+
+                            foreach (string item in fileDir)
+                            {
+                                int indexInAr = Array.IndexOf(fileDir, item);
+                                fileDir[indexInAr] = item.Replace(Directory.GetCurrentDirectory() + "\\", "");
+                            }
+
+                            
+                            
+                            prefix = prefix.Remove(0, 1);
+
+                            List<string> matches = new List<string>();
+                            
+                            
+                            foreach (string item in fileDir)
+                            {
+                                if (item.StartsWith(prefix))
+                                {
+                                    matches.Add(item);
+                                }
+                            }
+
+                            string[] matchArray = matches.ToArray();
+                            if (matchArray.Length == 1)
+                            {
+                                Console.WriteLine();
+                                builder.Remove(autoBegin + 1, prefix.Length);
+                                builder.Insert(autoBegin +1, matchArray[0] + " ");
+                                //builder.Append(behindInsert);
+                                clearCurrentLine();
+                                Console.Write(builder.ToString());
+                                Console.SetCursorPosition(cursorPos + (matchArray[0].Length+1-prefix.Length) + promptStr.Length, Console.CursorTop);
+                                cursorPos += matchArray[0].Length +1- prefix.Length;
+                            } else if (matchArray.Length > 1)
+                            {
+                                Console.WriteLine();
+                                foreach (var item in matchArray)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                clearCurrentLine();
+                                Console.Write(builder.ToString());
+                                Console.SetCursorPosition(cursorPos + promptStr.Length, Console.CursorTop);
+
+                            }
+
+                        }
+                    }
                     
                 }
                 else
@@ -83,7 +148,7 @@ namespace BetterCMD
         
         private static string clearCurrentLine()
         {
-            var currentLine = Console.CursorTop;
+            int currentLine = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLine);

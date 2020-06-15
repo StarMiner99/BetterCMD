@@ -110,12 +110,18 @@ namespace BetterCMD
             {
                 try
                 {
-                    Directory.SetCurrentDirectory(command.Substring(command.IndexOf(' ')+1, command.Length-command.IndexOf(' ')-1));
+                    Directory.SetCurrentDirectory(command.Substring(command.IndexOf(' ') + 1,
+                        command.Length - command.IndexOf(' ') - 1));
                 }
-                catch (Exception)
+                catch (DirectoryNotFoundException)
                 {
-                    Console.WriteLine("The system cannot find the path specified.");
+                    Console.WriteLine("No such directory.");
                 }
+                catch (IOException)
+                {
+                    Console.WriteLine("Not a directory.");
+                }
+                
                 
             } else if (commandOnly == "exit" || command == "exit")
             {
