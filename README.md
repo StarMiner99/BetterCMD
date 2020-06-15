@@ -6,6 +6,7 @@ BetterCMD implements new features for windows command line.
 **to download the latest release go to Releases tab**
 
 ## Installing
+
 ### Installer
 #### Install .NET Core Runtime (skip this step if already done)
 - Download the latest release of [.NET](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)
@@ -22,6 +23,7 @@ BetterCMD implements new features for windows command line.
 - press on 'Browse' 
 - Navigate to the folder where you installed BetterCMD (typically This PC->C:->Program Files (x86)->StarMiner99->BetterCMD->win10-x86)
 - select it and press 'OK' in every window you opened up.
+
 ### Portable
 #### Install .NET Core Runtime (skip this step if already done)
 - Download the latest release of [.NET](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)
